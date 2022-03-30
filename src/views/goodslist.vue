@@ -17,18 +17,18 @@
       <a href="javascript:;" slot="register" v-if="checkIfLogin" @click="logOut">
         注销
       </a>
-      <img src="../../static/picture/DingdanIcon.png" slot="register" v-if="checkIfLogin" class="header-icon">
+      <img src="../../static/picture/projectPic/DingdanIcon.png" slot="register" v-if="checkIfLogin" class="header-icon">
       <a href="javascript:;" slot="register" v-if="checkIfLogin" @click="goOrder">
         去订单中心
       </a>
-      <img src="../../static/picture/CartIcon.png" slot="register" v-if="checkIfLogin"  class="header-icon">
+      <img src="../../static/picture/projectPic/CartIcon.png" slot="register" v-if="checkIfLogin"  class="header-icon">
       <a href="javascript:;" slot="register" v-if="checkIfLogin" @click="goCart">
         去购物车
       </a>
     </nav-header>
     <div class="menu">
       <div class="menuWrap">
-        <img src="../../static/picture/nongchanpin.png" alt="">
+        <img src="../../static/picture/projectPic/nongchanpin.png" alt="">
         <a href="/">商城首页</a>
         <a href="http://localhost:8080/#/jieqigushi">节气故事</a>
         <a href="http://localhost:8080/#/nongchanpinjianjie">农产品简介</a>
@@ -42,13 +42,13 @@
       <div class="lunbo">
         <carousel class="index-carousel" :autoplay="true" :minSwipeDistance="40" :scrollPerPage="true" :speed="500" :perPage="1" :paginationPadding="5" :paginationSize="10" :loop="true" @param="right">
           <slide>
-           <img src="../../static/picture/ban1.jpg" alt=""  class="lunbo-pic">
+           <img src="../../static/picture/projectPic/ban1.jpg" alt=""  class="lunbo-pic">
           </slide>
           <slide>
-            <img src="../../static/picture/ban2.jpg" alt="" class="lunbo-pic">
+            <img src="../../static/picture/projectPic/ban2.jpg" alt="" class="lunbo-pic">
           </slide>
           <slide>
-            <img src="../../static/picture/ban3.jpg" alt="" class="lunbo-pic">
+            <img src="../../static/picture/projectPic/ban3.jpg" alt="" class="lunbo-pic">
           </slide>
         </carousel>
       </div>
@@ -548,7 +548,8 @@ export default {
 .productList {
   width: 100%;
   min-height: 620px;
-  background-image: url(../../static/picture/back.jpeg);
+  background-image: url("../../static/picture/projectPic/back.jpeg");
+  background-size: cover;
 }
 .productList-ul {
   width: 1200px;
@@ -867,11 +868,11 @@ export default {
   margin: 20px 0 20px 13px;
 }
 .someMenu .someMenu-cart {
-  background-image: url("../../static/picture/CartIcon.png");
+  background-image: url("../../static/picture/projectPic/CartIcon.png");
   background-size: 100%;
 }
 .someMenu .someMenu-order {
-  background-image: url("../../static/picture/DingdanIcon.png");
+  background-image: url("../../static/picture/projectPic/DingdanIcon.png");
   background-size: 100%;
 }
 </style>

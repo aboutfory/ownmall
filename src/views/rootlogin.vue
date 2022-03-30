@@ -72,7 +72,8 @@ export default {
 .rootLoginMain {
   width: 100%;
   height: 100%;
-  background-image: url("../../static/picture/rootback.jpg");
+  background-image: url("../../static/picture/projectPic/rootback.jpg");
+	background-size: cover;
   position:fixed;
 }
 @keyframes animationMsg{  

@@ -3,11 +3,34 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Goods = require('../model/goods');
 var Users = require('../model/users');
+var Roots = require('../model/roots');
 
 /*连接MongoDB数据库*/
 mongoose.connect('mongodb://127.0.0.1:27017/ownmall');
 
 mongoose.connection.on("connected", function () {
+	// 初始化一个管理员
+	Roots.find({}, function (err, doc) {
+		if (!doc || doc.length === 0) {
+			Roots.create({
+				"rootName": "root",
+				"rootPassword": "123456"
+			})
+		}
+	})
+	// 初始化一个商品
+	Goods.find({}, function (err, doc) {
+		if (!doc || doc.length === 0) {
+			Goods.create({
+				"productId" : "7cwylvodgzo00", 
+				"productName" : "烟台红富士山东苹果新鲜水果", 
+				"productSerchKey" : "苹果", 
+				"salePrice" : 10, 
+				"productImage" : "default.jpeg", 
+				"productMessage" : "烟台红富士山东苹果新鲜水果",
+			})
+		}
+	})
 	console.log("MongoDB connected success.");
 });
 

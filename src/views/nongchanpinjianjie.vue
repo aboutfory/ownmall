@@ -2,7 +2,7 @@
   <div>
     <div class="menu">
       <div class="menuWrap">
-        <img src="../../static/picture/nongchanpin.png" alt="">
+        <img src="../../static/picture/projectPic/nongchanpin.png" alt="">
         <a href="/">商城首页</a>
         <a href="http://localhost:8080/#/jieqigushi">节气故事</a>
         <a href="http://localhost:8080/#/nongchanpinjianjie">农产品简介</a>
@@ -10,11 +10,11 @@
       </div>
     </div>
     <div class="morePic">
-      <img src="../../static/picture/moreShow.jpg" alt="">
+      <img src="../../static/picture/projectPic/moreShow.jpg" alt="">
     </div>
     <div class="jianjie">农产品简介</div>
     <div class="jianjieforeng spe">Introduction of Agricultural Products</div>
-    <img class="toBottom" src="../../static/picture/toBottom.png" alt="">
+    <img class="toBottom" src="../../static/picture/projectPic/toBottom.png" alt="">
     <div class="contentforlixian">
         <span>农产品（farm produce）是农业中生产的物品，如高粱、稻子、花生、玉米、小麦以及各个地区土特产等。国家规定初级农产品是指农业活动中获得的植物、动物及其产品，不包括经过加工的各类产品。</span>
         <span>中国是一个农业大国，农业关系到国计民生，是国民经济的支柱产业。1995年，中国农业生产总值突破万亿元大关；进入21世纪以来，农业生产总值年均增长10%以上，2011年达到47712亿元。伴随农业生产总值的稳步增长，中国农业生产经营水平稳步上升，农民生活水平稳步提高。在农业产业化实现较快发展的同时，中国农产品加工业规模呈快速扩张之势，加工企业数量不断增加，且经营效益良好。2004年，我国规模以上农产品加工企业约为9318 家；至2011 年，这一数量增至20187 家，增幅达到166.45%。据统计，2011 年，我国规模以上农产品加实现工业总产值44132.38亿元；规模以上农产品加工业实现销售收入43896.10亿元，同比增长33.23%；规模以上农产品加工业利润总额2372.96 亿元，同比增长40.80%。</span>

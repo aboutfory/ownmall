@@ -14,7 +14,7 @@
         <li class="footer-li">法律声明</li>
         <li class="footer-li">知识产权</li>
       </ul>
-      <p>© 2019 yangbo.com All Rrights Reserved, it'sjust for learn</p>
+      <p>© 2019 aboutfory.com All Rrights Reserved, it'sjust for learn</p>
     </div>
   </div> 
 </template>

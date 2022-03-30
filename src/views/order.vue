@@ -7,11 +7,11 @@
       <a href="javascript:;" slot="register" v-if="checkIfLogin">
         当前是订单中心
       </a>
-      <img src="../../static/picture/CartIcon.png" slot="register" v-if="checkIfLogin" class="header-icon">
+      <img src="../../static/picture/projectPic/CartIcon.png" slot="register" v-if="checkIfLogin" class="header-icon">
       <a href="http://localhost:8080/#/cart" slot="register" v-if="checkIfLogin">
         去购物车
       </a>
-      <img src="../../static/picture/HomeIcon.png" slot="register" v-if="checkIfLogin"  class="header-icon">
+      <img src="../../static/picture/projectPic/HomeIcon.png" slot="register" v-if="checkIfLogin"  class="header-icon">
       <a href="/" slot="register" v-if="checkIfLogin">
         去主页
       </a>

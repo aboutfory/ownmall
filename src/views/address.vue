@@ -7,11 +7,11 @@
       <a href="javascript:;" slot="register" v-if="checkIfLogin">
         当前是地址选择
       </a>
-      <img src="../../static/picture/CartIcon.png" slot="register" v-if="checkIfLogin" class="header-icon">
+      <img src="../../static/picture/projectPic/CartIcon.png" slot="register" v-if="checkIfLogin" class="header-icon">
       <a href="#/cart" slot="register" v-if="checkIfLogin">
         去购物车
       </a>
-      <img src="../../static/picture/HomeIcon.png" slot="register" v-if="checkIfLogin"  class="header-icon">
+      <img src="../../static/picture/projectPic/HomeIcon.png" slot="register" v-if="checkIfLogin"  class="header-icon">
       <a href="/" slot="register" v-if="checkIfLogin">
         去主页
       </a>
@@ -45,7 +45,7 @@
       <div class="zhifubaozhezhao"></div>
       <div class="box">
         <span @click="closezhaohaoOrmima('11')">x</span>
-        <img src="../../static/picture/zhifubao.png" alt="">
+        <img src="../../static/picture/projectPic/zhifubao.png" alt="">
         <input autofocus="autofocus" type="text" v-model="zhifuzhanghao" placeholder="请输入您的支付宝账号" oninput="value=value.replace(/[^\d]/g,'')" maxlength="11">
         <button @click="zhaanghaotopay">支付</button>
       </div>   
@@ -54,7 +54,7 @@
       <div class="zhifubaozhezhao"></div>
       <div class="box">
         <span @click="closezhaohaoOrmima('22')">x</span>
-        <img src="../../static/picture/zhifubao.png" alt="">
+        <img src="../../static/picture/projectPic/zhifubao.png" alt="">
         <input type="password" v-model="zhifumima" placeholder="请输入您的支付密码" oninput="value=value.replace(/[^\d]/g,'')" maxlength="6">
         <button @click="mimatopay">确定</button>
       </div>   
@@ -62,7 +62,7 @@
     <div class="likePay" v-if="ifPay">
       <div class="payZhezhao"></div>
       <p>正在支付</p>
-      <img src="../../static/picture/payLoading.gif" alt="">
+      <img src="../../static/picture/projectPic/payLoading.gif" alt="">
     </div>
     <div class="addNewAddress" v-bind:class="{'addNewAddressShow':addNewAddressClose}">
       <div class="addNewAddressZheZhao" @click="closeAddressForm"></div>

@@ -5,19 +5,19 @@
         <div class="header-left">
           <ul>
             <li>
-              <img src="../../static/picture/PhoneIcon.png" alt="" class="header-icon">
+              <img src="../../static/picture/projectPic/PhoneIcon.png" alt="" class="header-icon">
               <span>15096366666</span>
             </li>
             <li>
-              <img src="../../static/picture/TimeIcon.png" alt="" class="header-icon">
+              <img src="../../static/picture/projectPic/TimeIcon.png" alt="" class="header-icon">
               <span>上午9点到晚上9点</span>
             </li>
           </ul>
         </div>
         <div class="header-right">
-          <img src="../../static/picture/LoginIcon.png" alt="" class="header-icon">
+          <img src="../../static/picture/projectPic/LoginIcon.png" alt="" class="header-icon">
           <slot name="login"></slot>
-          <img src="../../static/picture/RegisterIcon.png" alt="" class="header-icon">
+          <img src="../../static/picture/projectPic/RegisterIcon.png" alt="" class="header-icon">
           <slot name="register"></slot>
         </div>
       </div>
