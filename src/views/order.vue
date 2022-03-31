@@ -8,9 +8,10 @@
         当前是订单中心
       </a>
       <img src="../../static/picture/projectPic/CartIcon.png" slot="register" v-if="checkIfLogin" class="header-icon">
-      <a href="http://localhost:8080/#/cart" slot="register" v-if="checkIfLogin">
+			<router-link to="/cart" slot="register" v-if="checkIfLogin">去购物车</router-link>
+      <!-- <a href="http://localhost:8080/#/cart" slot="register" v-if="checkIfLogin">
         去购物车
-      </a>
+      </a> -->
       <img src="../../static/picture/projectPic/HomeIcon.png" slot="register" v-if="checkIfLogin"  class="header-icon">
       <a href="/" slot="register" v-if="checkIfLogin">
         去主页
@@ -96,6 +97,8 @@ import NavFooter from '../components/NavFooter'
 import NavBred from '../components/NavBred'
 import TanChuModel from '../components/TanChuModel'
 import axios from 'axios';
+axios.defaults.withCredentials = true
+import { mainHost } from "./../lib/mainHost";
 
 export default {
   data () {
@@ -120,7 +123,7 @@ export default {
   methods: {
     /*页面初始化检测是否已经登陆*/
     whenNewCheckIfLogin() {
-      axios.post("/users/checkIfLogin").then((response) => {
+      axios.post(mainHost + "/users/checkIfLogin").then((response) => {
         let res = response.data;
         if (res.status=='0') {
           this.userName = res.result.userName;
@@ -137,7 +140,7 @@ export default {
         this.orderList = [];
         return;
       } else {
-        axios.get("/users/orderShow").then((response) => {
+        axios.get(mainHost + "/users/orderShow").then((response) => {
           let res = response.data;
           if (res.status=='0') {
             this.orderList = res.result;
@@ -160,7 +163,7 @@ export default {
     /*确认收货*/
     sureReceivedGoods() {
     	this.toSureReceived = true;
-    	axios.post("/users/sureReceivedGoods",{
+    	axios.post(mainHost + "/users/sureReceivedGoods",{
     		orderId : this.orderId
     	}).then((response) => {
           let res = response.data;

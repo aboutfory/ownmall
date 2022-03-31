@@ -85,8 +85,8 @@
     <tan-chu-model v-bind:mdShow="successPay">
       <div slot="msg" class="msg">恭喜您付款成功</div>
       <div slot="btnGroup" class="btnGroup">
-        <a href="http://localhost:8080/#/" @click="delCartIschecked">回主页</a>
-        <a href="http://localhost:8080/#/order" @click="delCartIschecked">去订单中心</a>
+        <router-link to="/" @click="delCartIschecked">回主页</router-link>
+        <router-link to="/order" @click="delCartIschecked">去订单中心</router-link>
       </div>
     </tan-chu-model>
     <nav-footer></nav-footer>
@@ -99,6 +99,7 @@ import NavFooter from '../components/NavFooter'
 import NavBred from '../components/NavBred'
 import TanChuModel from '../components/TanChuModel'
 import axios from 'axios'
+import { mainHost } from "./../lib/mainHost";
 
 export default {
   data () {
@@ -144,7 +145,7 @@ export default {
   methods: {
     /*页面初始化检测是否已经登陆*/
     whenNew() {
-      axios.post("/users/checkIfLogin").then((response) => {
+      axios.post(mainHost + "/users/checkIfLogin").then((response) => {
         let res = response.data;
         if (res.status=='0') {
           this.userName = res.result.userName;
@@ -169,7 +170,7 @@ export default {
       if (this.souHuoName == '' || this.souHuoAddress == ''|| this.souHuoPostCode == '' || this.souHuoTel == '') {
         return;
       }
-      axios.post("/users/addAddress",{
+      axios.post(mainHost + "/users/addAddress",{
           souHuoName : this.souHuoName,
           souHuoAddress : this.souHuoAddress,
           souHuoPostCode : this.souHuoPostCode,
@@ -177,7 +178,7 @@ export default {
       }).then((response) => {
         let res = response.data;
         if (res.status=='0') {
-          axios.post("/users/checkIfLogin").then((response1) => {
+          axios.post(mainHost + "/users/checkIfLogin").then((response1) => {
             let res = response1.data;
             if (res.status=='0') {
               this.userName = res.result.userName;
@@ -206,7 +207,7 @@ export default {
     },
     /*确定删除地址*/
     sureDel() {
-      axios.post("/users/delAddress",{
+      axios.post(mainHost + "/users/delAddress",{
         addressId : this.addressId
       }).then((response) => {
         let res = response.data;
@@ -221,7 +222,7 @@ export default {
     /*选中地址*/
     chooseThisAddress(addressId) {
       this.addressId = addressId;
-      axios.post("/users/chooseAddress",{
+      axios.post(mainHost + "/users/chooseAddress",{
         addressId : this.addressId
       }).then((response) => {
         let res = response.data;
@@ -253,7 +254,7 @@ export default {
         this.zhanghao = false;
         this.mima = false;
         this.ifPay = true;
-        axios.post("/users/surePay").then((response) => {
+        axios.post(mainHost + "/users/surePay").then((response) => {
           let res = response.data;
           if (res.status=='0') {
             this.cartMsg = res.result;
@@ -288,7 +289,7 @@ export default {
     },
     /*删除购物车中已经被下为订单的商品*/
     delCartIschecked() {
-      axios.post("/users/delCartIschecked").then((response) => {
+      axios.post(mainHost + "/users/delCartIschecked").then((response) => {
         let res = response.data;
         if (res.status=='0') {
           console.log("删除成功");

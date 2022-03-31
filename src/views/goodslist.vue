@@ -2,7 +2,7 @@
   <div>
     <!-- <div class="welcome">欢迎来到农产品商城网站</div> -->
     <nav-header>
-      <a href="http://localhost:8080/#/rootlogin" slot="login" v-if="!checkIfLogin">
+      <a href="javascript:;" @click="() => {this.$router.push({path:'/rootlogin'})}" slot="login" v-if="!checkIfLogin">
         管理员登陆
       </a>
       <a href="javascript:;" slot="login" @click="loginOrRegister(loginMsg)" v-if="!checkIfLogin">
@@ -29,9 +29,9 @@
     <div class="menu">
       <div class="menuWrap">
         <img src="../../static/picture/projectPic/nongchanpin.png" alt="">
-        <a href="/">商城首页</a>
-        <a href="http://localhost:8080/#/jieqigushi">节气故事</a>
-        <a href="http://localhost:8080/#/nongchanpinjianjie">农产品简介</a>
+        <router-link to="/">商城首页</router-link>
+        <router-link to="/jieqigushi">节气故事</router-link>
+        <router-link to="/nongchanpinjianjie">农产品简介</router-link>
         <span>欢迎来到农产品网站小型商城</span>
       </div>
     </div>
@@ -153,6 +153,8 @@ import NavBred from '../components/NavBred'
 import TanChuModel from '../components/TanChuModel'
 import { Carousel, Slide } from 'vue-carousel';
 import axios from 'axios';
+axios.defaults.withCredentials = true
+import { mainHost } from "./../lib/mainHost";
 
 export default {
   data () {
@@ -250,7 +252,7 @@ export default {
         };
       }
       /*发请求确定符合条件的所有商品数目以确定页数*/
-      axios.get("/goods/all",{
+      axios.get(mainHost + "/goods/all",{
         params : params
       }).then((response) => {
         let res = response.data;
@@ -259,7 +261,7 @@ export default {
         }
       });
       /*发请求拿当前页的商品信息*/
-      axios.get("/goods",{
+      axios.get(mainHost + "/goods",{
         params : params
       }).then((response) => {
         let res = response.data;
@@ -274,7 +276,7 @@ export default {
     },
     /*页面初始化检测是否已经登陆*/
     whenNewCheckIfLogin() {
-      axios.post("/users/checkIfLogin").then((response) => {
+      axios.post(mainHost + "/users/checkIfLogin").then((response) => {
         let res = response.data;
         if (res.status=='0') {
           this.userName = res.result.userName;
@@ -354,7 +356,7 @@ export default {
     /*加入购物车*/
     addToCart(ind) {
       var productId = this.goodsList.length && this.goodsList[ind].productId;
-      axios.post("/goods/addCart",{
+      axios.post(mainHost + "/goods/addCart",{
         productId : productId
       }).then((response) => {
         let res = response.data;
@@ -370,7 +372,7 @@ export default {
       if (!this.userName || !this.userPwd) {
         return;
       }
-      axios.post("/users/login",{
+      axios.post(mainHost + "/users/login",{
         userName : this.userName,
         userPwd : this.userPwd
       }).then((response) => {
@@ -389,7 +391,7 @@ export default {
     /*注销*/
     logOut() {
       this.checkIfLogin = false;
-      axios.post("/users/logout").then((response) => {
+      axios.post(mainHost + "/users/logout").then((response) => {
         let res = response.data;
         if (res.status == '0') {
           this.userName = '';
@@ -402,7 +404,7 @@ export default {
       if (!this.userRegisterName || !this.userRegisterPwd) {
         return;
       }
-      axios.post("/users/register",{
+      axios.post(mainHost + "/users/register",{
         userRegisterName : this.userRegisterName,
         userRegisterPwd : this.userRegisterPwd
       }).then((response) => {
@@ -509,6 +511,7 @@ export default {
 }
 .lunbo {
   background-color: rgb(200,200,200);
+  margin: 0 5%
 }
 .lunbo-pic {
   width: 100%;
@@ -547,9 +550,9 @@ export default {
 }
 .productList {
   width: 100%;
-  min-height: 620px;
+  min-height: 1860px;
   background-image: url("../../static/picture/projectPic/back.jpeg");
-  background-size: cover;
+  background-size: contain;
 }
 .productList-ul {
   width: 1200px;
@@ -856,7 +859,7 @@ export default {
   background-color: rgb(200,200,200);
   position: fixed;
   right: 0;
-  bottom: 50px;
+  bottom: 50%;
   z-index: 999;
   border-radius: 10px;
 }

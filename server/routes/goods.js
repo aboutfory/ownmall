@@ -6,7 +6,7 @@ var Users = require('../model/users');
 var Roots = require('../model/roots');
 
 /*连接MongoDB数据库*/
-mongoose.connect('mongodb://127.0.0.1:27017/ownmall');
+mongoose.connect('mongodb://120.76.132.108:27017/ownmall');
 
 mongoose.connection.on("connected", function () {
 	// 初始化一个管理员

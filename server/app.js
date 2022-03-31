@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -10,6 +11,25 @@ var goodsRouter = require('./routes/goods');
 var rootRouter = require('./routes/roots');
 
 var app = express();
+
+app.use(cors({
+	origin:true,//允许该域名下的请求
+	methods:["GET","POST"],　　　　　　//　　允许接受的 请求类型
+	alloweHeaders:['Conten-Type','Authorization','Accept','Origin'],　　//请求头
+	exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+	credentials: true, // 发送cookie
+}));
+
+// app.all('*', function(req, res, next) {
+// 	res.header("Access-Control-Allow-Origin", req.headers.origin);
+// 	res.header('Access-Control-Allow-Credentials: true'); 　　//是否支持cookie跨域
+// 	res.header("Access-Control-Allow-Headers", "X-Requested-With");
+// 	res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+// 	res.header("X-Powered-By",' 3.2.1')
+// 	res.header("Content-Type", "application/json;charset=utf-8");
+// 	if(req.method=="OPTIONS") res.send(200);
+// 	next();
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

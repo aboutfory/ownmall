@@ -7,7 +7,7 @@
   	<div class="rootTitle">
   		<div class="rootWrap">
   			<p>欢迎来到商品后台管理界面</p>
-  			<a href="http://localhost:8080/#/rootlogin" v-if="!checkIfLogin">去登陆</a>
+				<router-link to="/rootlogin" v-if="checkIfLogin">去登陆</router-link>
   			<a href="javascript:;" v-if="checkIfLogin" @click="register">注销</a>
   		</div>
   		<div class="methodsTitle">
@@ -146,6 +146,8 @@ import NavFooter from '../components/NavFooter'
 import NavBred from '../components/NavBred'
 import TanChuModel from '../components/TanChuModel'
 import axios from 'axios';
+axios.defaults.withCredentials = true
+import { mainHost } from "./../lib/mainHost";
 
 export default {
   data () {
@@ -189,7 +191,7 @@ export default {
   methods: {
   	/*初始化检测管理员是否登陆*/
   	checkIf() {
-  		axios.post("/roots/checkIf").then((response) => {
+  		axios.post(mainHost + "/roots/checkIf").then((response) => {
         let res = response.data;
         if (res.status=='0') {
           this.checkIfLogin = true;
@@ -200,7 +202,7 @@ export default {
   	},
   	/*注销*/
   	register() {
-  		axios.post("/roots/register").then((response) => {
+  		axios.post(mainHost + "/roots/register").then((response) => {
         let res = response.data;
         if (res.status=='0') {
           this.checkIfLogin = false;
@@ -220,7 +222,7 @@ export default {
   			this.ifAdd = false;
 			this.ifDel = true;
 			this.ifChange = false;
-			axios.get("/roots/allGoods").then((response) => {
+			axios.get(mainHost + "/roots/allGoods").then((response) => {
 				let res = response.data;
 				if (res.status=='0') {
 				  this.delGoodsList = res.result;
@@ -230,7 +232,7 @@ export default {
   			this.ifAdd = false;
 			this.ifDel = false;
 			this.ifChange = true;
-			axios.get("/roots/allGoods").then((response) => {
+			axios.get(mainHost + "/roots/allGoods").then((response) => {
 				let res = response.data;
 				if (res.status=='0') {
 				  this.changeGoodsList = res.result;
@@ -241,7 +243,7 @@ export default {
   	/*搜索商品*/
   	serch(pro) {
   		if (pro == "del") {
-  			axios.get("/roots/serch",{
+  			axios.get(mainHost + "/roots/serch",{
   				params : {"productSerchKey" : this.delSerch}
   			}).then((response) => {
 				let res = response.data;
@@ -252,7 +254,7 @@ export default {
 				}
 			});
   		} else {
-  			axios.get("/roots/serch",{
+  			axios.get(mainHost + "/roots/serch",{
   				params : {"productSerchKey" : this.changeSerch}
   			}).then((response) => {
 				let res = response.data;
@@ -277,7 +279,7 @@ export default {
   	},
   	/*点确定删除商品*/
   	sureDel() {
-  		axios.post("/roots/del",{
+  		axios.post(mainHost + "/roots/del",{
 				"productId" : this.delProductId,
 				"productImage" : this.delProductImage
 			}).then((response) => {
@@ -302,7 +304,7 @@ export default {
 			let config = {
 				headers:{"Content-Type":"multipart/form-data"}
 			}
-			axios.post('/roots/addGoodImg',Form,config).then((response)=>{
+			axios.post(mainHost + '/roots/addGoodImg',Form,config).then((response)=>{
 				let res = response.data;
 				this.addImgName = res.result;
 				console.log(this.addImgName)
@@ -325,7 +327,7 @@ export default {
   	},
   	/*确定是否提交商品*/
 	sureTijiaoThree() {
-		axios.post("/roots/addGood",{
+		axios.post(mainHost + "/roots/addGood",{
 			"productName" : this.addName,
 			"productSerchKey" : this.addSearch,
 			"salePrice" : this.addPrice,
@@ -344,7 +346,7 @@ export default {
 		this.addTanchuThree = true;
 	},
 	closeTijiaoThree() {
-		axios.post("/roots/delImg",{
+		axios.post(mainHost + "/roots/delImg",{
 				"productImage" : this.addImgName
 			}).then((response) => {
 			let res = response.data;
@@ -382,7 +384,7 @@ export default {
 			let config = {
 				headers:{"Content-Type":"multipart/form-data"}
 			}
-			axios.post('/roots/addGoodImg',Form,config).then((response)=>{
+			axios.post(mainHost + '/roots/addGoodImg',Form,config).then((response)=>{
 				let res = response.data;
 				this.changeImgName = res.result;
 				console.log(this.addImgName)
@@ -393,7 +395,7 @@ export default {
 	},
 	/*确认和取消修改*/
 	sureChange() {
-		axios.post("/roots/changeGood",{
+		axios.post(mainHost + "/roots/changeGood",{
 			"productId" : this.changeProductId,
 			"productName" : this.changeName,
 			"productSerchKey" : this.changeSearchKey,
@@ -418,7 +420,7 @@ export default {
 	},
 	closeChange() {
 		if (this.changeImgName) {
-			axios.post("/roots/delImg",{
+			axios.post(mainHost + "/roots/delImg",{
 				"productImage" : this.changeImgName
 			}).then((response) => {
 				let res = response.data;

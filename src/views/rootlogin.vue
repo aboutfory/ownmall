@@ -23,6 +23,8 @@ import NavFooter from '../components/NavFooter'
 import NavBred from '../components/NavBred'
 import TanChuModel from '../components/TanChuModel'
 import axios from 'axios';
+axios.defaults.withCredentials = true
+import { mainHost } from "./../lib/mainHost";
 
 export default {
   data () {
@@ -46,7 +48,7 @@ export default {
       if (!this.name || !this.pwd) {
         return;
       }
-      axios.post("/roots",{
+      axios.post(mainHost + "/roots",{
         rootName : this.name,
         rootPassword : this.pwd
       }).then((response) => {

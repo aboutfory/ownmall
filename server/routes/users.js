@@ -32,7 +32,7 @@ router.post('/login', function(req, res, next) {
 				if (nowMossion) {
 					res.cookie("userId",nowDoc.userId,{
 						path:'/',
-						maxAge:1000*60*60
+						maxAge:1000*60*60,
 					});
 					res.json({
 						status : '0',

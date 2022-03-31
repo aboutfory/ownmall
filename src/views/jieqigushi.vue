@@ -3,9 +3,9 @@
     <div class="menu">
       <div class="menuWrap">
         <img src="../../static/picture/projectPic/nongchanpin.png" alt="">
-        <a href="/">商城首页</a>
-        <a href="http://localhost:8080/#/jieqigushi">节气故事</a>
-        <a href="http://localhost:8080/#/nongchanpinjianjie">农产品简介</a>
+        <router-link to="/">商城首页</router-link>
+        <router-link to="/jieqigushi">节气故事</router-link>
+        <router-link to="/nongchanpinjianjie">农产品简介</router-link>
         <span>欢迎来到农产品网站小型商城</span>
       </div>
     </div>
@@ -39,7 +39,6 @@ import NavFooter from '../components/NavFooter'
 import NavBred from '../components/NavBred'
 import TanChuModel from '../components/TanChuModel'
 import { Carousel, Slide } from 'vue-carousel';
-import axios from 'axios';
 
 export default {
   data () {

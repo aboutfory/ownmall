@@ -8,9 +8,10 @@
         当前是购物车
       </a>
       <img src="../../static/picture/projectPic/DingdanIcon.png" slot="register" v-if="checkIfLogin" class="header-icon">
-      <a href="http://localhost:8080/#/order" slot="register" v-if="checkIfLogin">
+      <router-link to="/order" slot="register" v-if="checkIfLogin">去订单中心</router-link>
+      <!-- <a href="http://localhost:8080/#/order" slot="register" v-if="checkIfLogin">
         去订单中心
-      </a>
+      </a> -->
       <img src="../../static/picture/projectPic/HomeIcon.png" slot="register" v-if="checkIfLogin"  class="header-icon">
       <a href="/" slot="register" v-if="checkIfLogin">
         去主页
@@ -90,6 +91,8 @@ import NavFooter from '../components/NavFooter'
 import NavBred from '../components/NavBred'
 import TanChuModel from '../components/TanChuModel'
 import axios from 'axios';
+axios.defaults.withCredentials = true
+import { mainHost } from "./../lib/mainHost";
 
 export default {
   data () {
@@ -126,7 +129,7 @@ export default {
   methods: {
     /*页面初始化检测是否已经登陆*/
     whenNewCheckIfLogin() {
-      axios.post("/users/checkIfLogin").then((response) => {
+      axios.post(mainHost + "/users/checkIfLogin").then((response) => {
         let res = response.data;
         if (res.status=='0') {
           this.userName = res.result.userName;
@@ -139,7 +142,7 @@ export default {
     },
     /*渲染购物车列表*/
     cartShow() {
-      axios.get("/users/cartShow").then((response) => {
+      axios.get(mainHost + "/users/cartShow").then((response) => {
         let res = response.data;
         if (res.status=='0') {
           this.ifAllChecked = res.result.ifAllChecked;
@@ -151,7 +154,7 @@ export default {
     },
     /*点击按钮改变购物车商品数量*/
     changeProductNumber(met, productId, num) {
-      axios.post("/users/changeProductNumber",{
+      axios.post(mainHost + "/users/changeProductNumber",{
         met : met,
         productId : productId,
         num : num
@@ -169,7 +172,7 @@ export default {
     },
     /*确认删除*/
     del() {
-      axios.post("/users/delCartItem",{
+      axios.post(mainHost + "/users/delCartItem",{
         productId : this.productId,
       }).then((response) => {
         let res = response.data;
@@ -191,7 +194,7 @@ export default {
         items.checked = '1';
       }
 
-      axios.post("/users/ifItemChecked",{
+      axios.post(mainHost + "/users/ifItemChecked",{
         checkItem : items.checked,
         index : index
       }).then((response) => {
@@ -200,7 +203,7 @@ export default {
           console.log('update suc');
         }
       });
-      axios.get("/users/cartShow").then((response) => {
+      axios.get(mainHost + "/users/cartShow").then((response) => {
         let res = response.data;
         if (res.status=='0') {
             this.ifAllChecked = res.result.ifAllChecked;
@@ -221,7 +224,7 @@ export default {
           items.checked = this.ifAllChecked;
       });
 
-      axios.post("/users/ifAllChecked",{
+      axios.post(mainHost + "/users/ifAllChecked",{
         checkAll : this.ifAllChecked
       }).then((response) => {
         let res = response.data;
@@ -229,7 +232,7 @@ export default {
           console.log('update suc');
         }
       });
-      axios.get("/users/cartShow").then((response) => {
+      axios.get(mainHost + "/users/cartShow").then((response) => {
         let res = response.data;
         if (res.status=='0') {
           this.cartList = res.result.cartList;

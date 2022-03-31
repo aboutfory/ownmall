@@ -10,30 +10,30 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-        '/goods': {
-            target: 'http://localhost:3000'
-        },
-        '/goods*': {
-            target: 'http://localhost:3000'
-        },
-        '/users': {
-            target: 'http://localhost:3000'
-        },
-        '/users*': {
-            target: 'http://localhost:3000'
-        },
-        '/roots': {
-            target: 'http://localhost:3000'
-        },
-        '/roots*': {
-            target: 'http://localhost:3000'
-        }
-    },
+    // proxyTable: {
+    //     '/goods': {
+    //         target: 'http://localhost:3000'
+    //     },
+    //     '/goods*': {
+    //         target: 'http://localhost:3000'
+    //     },
+    //     '/users': {
+    //         target: 'http://localhost:3000'
+    //     },
+    //     '/users*': {
+    //         target: 'http://localhost:3000'
+    //     },
+    //     '/roots': {
+    //         target: 'http://localhost:3000'
+    //     },
+    //     '/roots*': {
+    //         target: 'http://localhost:3000'
+    //     }
+    // },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 5050, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
